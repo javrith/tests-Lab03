@@ -15,6 +15,20 @@
 // dependencies people may have introduced into CollisionComponent.cpp
 #include <algorithm>
 #include <vector>
+// Create dummy implementations for a few SDL functions/macros
+#ifdef SDL_assert
+#undef SDL_assert
+#endif
+#define SDL_assert(condition) REQUIRE(condition)
+
+#ifdef SDL_assert_release
+#undef SDL_assert_release
+#endif
+#define SDL_assert_release(condition) REQUIRE(condition)
+
+// Skip over SDL logs completely
+static void SDL_Log(...) {}
+
 #include "CollisionComponent.cpp"
 
 TEST_CASE("GetMin()")
