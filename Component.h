@@ -6,7 +6,7 @@ public:
 	Component(class Actor* a)
 		:mOwner(a)
 	{ }
-	class Actor* GetOwner() { return mOwner; }
+	class Actor* GetOwner() const { return mOwner; }
 protected:
 	class Actor* mOwner;
 };
