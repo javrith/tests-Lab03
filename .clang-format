@@ -51,6 +51,7 @@ IndentPPDirectives: None
 IndentWidth: 4
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: All
+PenaltyBreakAssignment: 25
 PointerAlignment: Left
 SortIncludes: false
 SpaceBeforeCaseColon: false

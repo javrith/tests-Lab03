@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Any source files in this directory
-set(SOURCE_FILES Main.cpp Math.cpp Actor.cpp Transform.cpp Component.cpp CollisionComponent.cpp)
+set(SOURCE_FILES Main.cpp Math.cpp Actor.cpp Transform.cpp Component.cpp CollisionComponent.cpp Game.cpp)
 
 # Name of executable
 add_executable(main ${SOURCE_FILES})
