@@ -58,7 +58,7 @@ CollSide CollisionComponent::GetMinOverlap(const CollisionComponent* other, Vect
 	else // Does intersect
 	{
 		// Top Dist: Top of block minus bottom of player
-		float topDist = other->GetMin().y - GetMax().y;
+		float topDist =other->GetMin().y - GetMax().y;
 		// Bottom Dist
 		float bottomDist = other->GetMax().y - GetMin().y;
 		// Right Dist
@@ -68,27 +68,27 @@ CollSide CollisionComponent::GetMinOverlap(const CollisionComponent* other, Vect
 
 		// Find Minimum
 		float minimumDist =
-			Math::Abs(Math::Min(Math::Min(topDist, bottomDist), Math::Min(rightDist, leftDist)));
+		(Math::Min(Math::Min(Math::Abs(topDist), Math::Abs(bottomDist)), Math::Min(Math::Abs(rightDist), Math::Abs(leftDist))));
 		//Would do switch case here but I don't think you can with floats
 		//Possibly todo: test if NearlyEqual is necessary?
-		if (Math::NearlyEqual(minimumDist, topDist))
+		if (Math::NearlyEqual(minimumDist, Math::Abs(topDist)))
 		{
-			offset.y = minimumDist;
+			offset.y = topDist;
 			return CollSide::Top;
 		}
-		else if (Math::NearlyEqual(minimumDist, bottomDist))
+		else if (Math::NearlyEqual(minimumDist, Math::Abs(bottomDist)))
 		{
-			offset.y = minimumDist;
+			offset.y = bottomDist;
 			return CollSide::Bottom;
 		}
-		else if (Math::NearlyEqual(minimumDist, rightDist))
+		else if (Math::NearlyEqual(minimumDist, Math::Abs(rightDist)))
 		{
-			offset.x = minimumDist;
+			offset.x = rightDist;
 			return CollSide::Right;
 		}
 		else // Left
 		{
-			offset.x = minimumDist;
+			offset.x = leftDist;
 			return CollSide::Left;
 		}
 	}
